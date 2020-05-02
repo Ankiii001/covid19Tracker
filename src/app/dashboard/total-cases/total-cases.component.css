@@ -1,0 +1,16 @@
+.card-border-confirmed {
+    border-bottom: 5px solid #f76161;
+}
+.card-border-active {
+    border-bottom: 5px solid #75b0e7;
+}
+.card-border-recovered {
+    border-bottom: 5px solid #8cf38c;
+}
+.card-border-deceased {
+    border-bottom: 5px solid #6d767e;
+}
+.custom-card {
+    height: 300px;
+    overflow: scroll;
+}
