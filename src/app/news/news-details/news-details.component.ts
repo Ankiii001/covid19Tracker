@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { INewsDetails } from 'src/app/shared/interfaces/INewsDetails';
 
 @Component({
   selector: 'app-news-details',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-details.component.css']
 })
 export class NewsDetailsComponent implements OnInit {
+  @Input() news:INewsDetails
 
   constructor() { }
 

@@ -1,8 +1,14 @@
 <div class="row">
     <div class="col-md-5">
-        <app-news-list></app-news-list>
+        <app-news-list 
+        (newsWasSelected)="selectedNews = $event"></app-news-list>
     </div>
-    <div class="col-md-7" style="">
-        <app-news-details></app-news-details>
+    <div class="col-md-7" style="padding-left: 20px;">
+        <app-news-details 
+        *ngIf="selectedNews; else infoText"
+        [news]="selectedNews"></app-news-details>
+        <ng-template #infoText>
+            <p>Select a News!</p>
+        </ng-template>
     </div>
 </div>

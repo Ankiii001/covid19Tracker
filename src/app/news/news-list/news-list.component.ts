@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { News } from '../news.model';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { INewsDetails } from 'src/app/shared/interfaces/INewsDetails';
+import { NewsDetailService } from 'src/app/services/news.details.service';
 
 @Component({
   selector: 'app-news-list',
@@ -8,20 +10,30 @@ import { News } from '../news.model';
 })
 export class NewsListComponent implements OnInit {
 
-  news: News[] = [
-    new News('Cholle Bhature', 
-    'Chole bhature is a spicy chickpeas curry served with leavened fried bread. Popular in Punjab and parts of north India.', 
-    'asfasfadf',
-    'https://upload.wikimedia.org/wikipedia/commons/4/4c/Chola_bhatura_ngp.jpg'),
-    new News('Cholle Bhature', 
-    'Chole bhature is a spicy chickpeas curry served with leavened fried bread. Popular in Punjab and parts of north India.', 
-    'asfasfadf',
-    'https://upload.wikimedia.org/wikipedia/commons/4/4c/Chola_bhatura_ngp.jpg'),
-  ];
+  news: INewsDetails[];
+  @Output() newsWasSelected = new EventEmitter<INewsDetails>();
 
-  constructor() { }
+  constructor(private newsDetailService: NewsDetailService) { }
 
   ngOnInit(): void {
+    this.listAllNews();
   }
 
+  listAllNews() {
+    this.newsDetailService.getNewsDetails().subscribe(data => {
+      this.news = data;
+    });
+  }
+
+  deleteNews(id: number) {
+     
+  }
+
+  save(newNews: INewsDetails){
+    this.newsDetailService.addNews(newNews).subscribe();
+  }
+
+  onNewsSelected(newsItem: INewsDetails){
+    this.newsWasSelected.emit(newsItem)
+  }
 }

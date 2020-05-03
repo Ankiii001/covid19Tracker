@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild  } from '@angular/core';
-import { DataService } from './data.service'
+import { DataService } from '../../services/data.service'
 import { Covid19Data} from '../../shared/covid-19-data.model';
 import { DistrictData} from '../../shared/state-district.model';
 import { StateWiseCases} from '../../shared/state-wise-case.model';
