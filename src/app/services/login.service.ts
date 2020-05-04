@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable, EventEmitter, Output, OnInit } from '@angular/core';
 import { IUser } from '../shared/interfaces/IUser';
 import { BehaviorSubject } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 /** This is a Login service. */
-export class LoginService {
+export class LoginService implements OnInit{
 
   /** Array of login user data. */
   private loginData: IUser[];
@@ -21,6 +21,10 @@ export class LoginService {
     this.getLoginStatus()
   }
 
+  ngOnInit(): void {
+    this.getLoginStatus()
+  }
+  
   /** Method to get all login user data. */
   getUsers(): IUser[] {
     this.loginData = [{
