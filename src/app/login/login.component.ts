@@ -47,7 +47,7 @@ export class AppLoginComponent implements OnInit {
     if (localStorage.getItem('LOGINTOKEN')) {
       localStorage.clear();
     }
-    // this.loginService.getLoginStatus()
+    this.loginService.getLoginStatus()
   }
 
   /**
