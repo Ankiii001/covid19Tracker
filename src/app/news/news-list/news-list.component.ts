@@ -10,6 +10,7 @@ import { NewsDetailService } from 'src/app/services/news.details.service';
 })
 export class NewsListComponent implements OnInit {
 
+  adminLoggedIn: boolean = false;
   news: INewsDetails[];
   @Output() newsWasSelected = new EventEmitter<INewsDetails>();
 
@@ -17,6 +18,9 @@ export class NewsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.listAllNews();
+    if(localStorage.getItem('LOGINTOKEN') === 'asd@zxc'){
+      this.adminLoggedIn = true
+    }
   }
 
   listAllNews() {
